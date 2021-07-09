@@ -54,7 +54,7 @@ elsif cmd == "2"
     puts "1) Yuna"
     puts "2) Sensei Ishikawa"
     cmd_heal= gets.chomp
-    
+
     if cmd_heal == "1"
         @allies= yuna
         @alliesname="Yuna"
@@ -68,6 +68,7 @@ else
     puts cmd + "wrong number"
 end
 
+yuna.attack()
 
 # loop do
 
