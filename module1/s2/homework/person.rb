@@ -21,6 +21,10 @@ class Person
         @hitpoint -= damage
     end
 
+    def recovery(damage)
+        @hitpoint += damage
+    end
+
     def dies?
         if @hitpoint <= 0
         puts "#{@name} dies"
