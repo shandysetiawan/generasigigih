@@ -34,11 +34,12 @@ INSERT INTO order_details VALUES (1,5,2,10),(2,4,3,12),(3,1,4,8),(4,7,2,9),(5,5,
 
 ------------------------ 4 -----------------------------
 
-SELECT order_details.id, orders.order_date, customer_name, customer_phone, order_details.quantity*items.price AS total_price, items.name
+SELECT MIN(orders.id) AS order_id, orders.order_date, MIN(customers.customer_name) AS customer_name, MIN(customers.customer_phone) AS customer_phone,  SUM(quantity*items.price) AS total_price, GROUP_CONCAT(items.name) AS item_bought
 FROM order_details 
 LEFT JOIN orders
-ON orders.id = order_details.order_id 
+ON orders.id = order_details.order_id
 LEFT JOIN customers
 on customers.id = orders.customer_id
 INNER JOIN items
-on order_details.item_id = items.id;
+on order_details.item_id = items.id
+GROUP BY orders.order_date;
