@@ -4,7 +4,11 @@ class Number
         @numbers = numbers
     end
 
+    # def increment
+    #     @numbers
+    # end
+
     def increment
-        @numbers
+        @numbers.map { |n| n+1 }
     end
 end
